@@ -2,7 +2,7 @@
 ## Learing JavaScript
 
 ### git
-git : https://github.com/Soon-cheol/es6.git
+git clone https://github.com/Soon-cheol/es6.git
 
 ### 진행
 - 시간: 오후 2시
