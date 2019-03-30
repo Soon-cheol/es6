@@ -1,7 +1,7 @@
 # es6 스터디
 ## Learing JavaScript
 
-###git
+### git
 git : https://github.com/Soon-cheol/es6.git
 
 ### 진행
