@@ -32,3 +32,5 @@ git clone https://github.com/Soon-cheol/es6.git
 - 20장 노드
 - 21장 객체 프로퍼티 설정과 프락시
 - 22장 추가자원 - X
+
++ lodash
