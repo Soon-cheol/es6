@@ -15,10 +15,9 @@ while (funds > 1 && funds < 100) {
     // 자본금은 50보다는 크고 100보다는 작다 
     round++; // 판횟수 증가
 
-    console.log(‘round $ { round }: ’);
+    console.log(`round ${round}: `);
     // 몇번째 게임
-    console.log(‘\tstarting funds: $ { funds }
-        p’);
+    console.log(`\tstarting funds: ${funds}p`);
     // 돈을 겁니다.
 
     let bets = { crown: 0, anchor: 0, heart: 0, spade: 0, club: 0, diamond: 0 };
@@ -28,7 +27,7 @@ while (funds > 1 && funds < 100) {
     let totalBet = rand(1, funds);
     // 전체 거는 금액은 1~50까지 사이 랜덤
 
-    if (totalBet == 7) {
+    if (totalBet === 7) {
         // 만약 7이 나온다면
         totalBet = funds;
         // 전체 금액을 건다
@@ -54,10 +53,7 @@ while (funds > 1 && funds < 100) {
     funds = funds - totalBet;
     //  전체 금액에 거는 돈은 뺀다
 
-    console.log(‘\tbets: ’+Object.keys(bets).map(face => ‘$ { face }: $ { bets[face] }
-            pence’).join(‘, ’) +
-        (total: $ { totalBet }
-            pence)’);
+    console.log('\tbets: '+Object.keys(bets).map(face => `${face}: ${bets[face]} pence`).join(', ') + `(total: ${totalBet} pence)`);
 
     // 주사위를 굴립니다.
     const hand = [];
@@ -68,7 +64,7 @@ while (funds > 1 && funds < 100) {
         // 모양이 3가지 나온다 (배열에 요소 추가함)
     }
 
-    console.log(‘\thand: $ { hand.join(‘, ’) }’);
+    console.log(`\thand: $ { hand.join(', ') }`);
 
     let winnings = 0;
     //처음에는 획득한 금액은 없음 
@@ -84,12 +80,7 @@ while (funds > 1 && funds < 100) {
         // 모양에 건금액이 모양이 0보다 크면 모양에 건금액에서 돈을 얻음
     }
     funds = funds + winnings;
-    //자본금은 획득한 금액을 더함 
-
-
-    funds = funds + winnings;
     // 자금에 획득한 금액을 합치면 자본금이 된다. 
-
-    console.log(‘\twinnings: $ { winnnings }’’);
+    console.log(`\twinnings: ${winnnings}`);
 }
-console.log(‘\tending funds: $ { funds }’);
+console.log(`\tending funds: ${funds}`);
