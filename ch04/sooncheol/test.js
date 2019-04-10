@@ -81,6 +81,6 @@ while (funds > 1 && funds < 100) {
     }
     funds = funds + winnings;
     // 자금에 획득한 금액을 합치면 자본금이 된다. 
-    console.log(`\twinnings: ${winnnings}`);
+    console.log(`\twinnings: ${winnings}`);
 }
 console.log(`\tending funds: ${funds}`);
