@@ -12,7 +12,7 @@ x;			// ReferenceError : x is not defined
 함수 안에서는 x가 존재하지만 함수 밖에서는 존재하지 않는다. <br>
 x의 스코프는 함수 f이다. <br>
 <br>
-※ 역주_ 스코프를 시야 또는 범위라고 읽으면 이해하기 편한 설명이 많습니다.
+>- 역주_ 스코프를 시야 또는 범위라고 읽으면 이해하기 편한 설명이 많습니다.
 <br>
 
 ## 스코프의 존재
@@ -118,6 +118,7 @@ function getBirthYear(user) {
 
 ## 블록 스코프
 > 잘 사용하지 않지만 스코프의 이해를 돕기위한 독립 블록 예제
+
 ```javascript
 console.log('before block');
 {
@@ -130,6 +131,7 @@ console.log(`outside block; x=${x}`);	// ReferenceError : x는 정의되지 않�
 - 블록 범위의 스코프에는 존재하지만 블록 밖의 스코프에서는 정의되지 않는다. <br>
 
 ## 변수 숨기기
+
 ```javascript
 {
 	// block 1
@@ -160,7 +162,9 @@ console.log(typeof x);		// "undefined"; x는 스코프 밖에 있습니다.
 }
 console.log(typeof x);		// "undefined"; x는 스코프에 있지 않습니다.
 ```
+
 <br>
+
 ```javascript
 {
 	// 외부블록
@@ -185,7 +189,9 @@ console.log(typeof x);		// "undefined"; x는 스코프에 있지 않습니다.
 - 내부에서는 외부 스코프에 접근할 수 있지만, 외부 스코프는 내부 스코프에 접근할 수 없다. <br>
 
 ## 함수, 클로저, 정적 스코프
-- 함수가 특정 스코프에 접근할 수 있도록 의도적으로 그 스코프에서 정의하는 것을 <i>클로저<sup>closure</sup></i>라고 한다.
+- 함수가 특정 스코프에 접근할 수 있도록 의도적으로 그 스코프에서 정의하는 것을 <i>클로저 <sup>closure</sup></i>라고 한다.
+<br>
+
 ```javascript
 let globalFunc;					// 정의되지 않은 전역 함수
 {
@@ -216,6 +222,7 @@ oRef.note = "Not so safe after all!";
 
 ## 즉시 호출하는 함수 표현식 (즉시 실행 함수)
 > IIFE : 즉시 호출하는 함수 표현식
+
 ```javascript
 // IIFE 의 기본 구조
 (function() {
@@ -232,6 +239,7 @@ const message = (function() {
 console.log(message);		// "The secret is 13 characters long."
 ```
 <br>
+
 ```javascript
 const f = (function() {
 	let count = 0;
@@ -248,17 +256,20 @@ f();	// "I have been called 2 time(s)."
 ## 함수 스코프와 호이스팅
 - ES6에서 let을 도입하기 전에는 var로 변수를 선언했으며, var 선언변수는 함수 스코프를 가지고 있다. <br>
 let 예제
+
 ```javascript
 x; 			// ReferenceError; x는 정의되지 않았습니다.
 let x = 3;	// 에러가 일어나서 실행이 멈췄으므로 여기에는 결코 도달할 수 없습니다.
 ```
 var 예제
+
 ```javascript
 x;			// undefined; x는 존재하지만 할당 받는 값이 없는 상태로 간주한다.
 var x = 3;
 x;			// 3
 ```
 자바스크립트가 위의 예제를 해석한 내용
+
 ```javascript
 var x;			// 선언(할당은 아닌)이 끌어올려집니다.
 x;				// undefined
@@ -266,6 +277,7 @@ x = 3;
 x;				// 3
 ```
 심화 예제
+
 ```javascript
 // 원래 코드								// 자바스크립트가 해석한 코드
 											var x;
@@ -296,6 +308,7 @@ console.log(x);								console.log(x);
 - 아직까지 var이 사라지지 않는 이유는 이전 소스들이 존재하기 때문이다. <br>
 
 ## 함수 호이스팅
+
 ```javascript
 f();					// "f"
 function f() {
@@ -303,6 +316,7 @@ function f() {
 }
 ```
 <br>
+
 ```javascript
 f();					// ReferenceError: f는 정의되지 않았습니다.
 let f = function() {
@@ -314,6 +328,7 @@ let f = function() {
 
 ## 사각지대
 - <i>사각지대</i>란 let으로 선언하는 변수는 선언하기 전까지 존재하지 않는다는 것을 뜻한다.<br>
+
 ```javascript
 if(typeof x === "undefined") {
 	console.log("x doesn't exist or is undefined");
