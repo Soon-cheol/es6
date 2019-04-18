@@ -9,6 +9,7 @@ function f(x) {
 f(5);		// 8
 x;			// ReferenceError : x is not defined
 ```
+
 함수 안에서는 x가 존재하지만 함수 밖에서는 존재하지 않는다. <br>
 x의 스코프는 함수 f이다. <br>
 <br>
@@ -39,6 +40,7 @@ f2();
 f1();
 f2();
 ```
+
 <br>
 정적 스코프는 어떤 변수가 함수 스코프 안에 있는지 함수를 정의할 때 알 수 있다는 뜻이다.
 <br>
@@ -89,6 +91,7 @@ function getBirthYear() {
 	return new Data().getFullYear() - age;
 }
 ```
+
 책에서 말하는 문제점
 <ul>
 	<li>함수가 호출하는 스코프에 대단히 의존적</li>
@@ -110,6 +113,7 @@ function getBirthYear(user) {
 	return new Data().getFullYear() - user.age;
 }
 ```
+
 책에서 말하는 더나은 방법
 <ul>
 	<li>변수를 객체화 하여 오해의 소지를 줄인다.</li>
@@ -117,7 +121,7 @@ function getBirthYear(user) {
 </ul>
 
 ## 블록 스코프
-> 잘 사용하지 않지만 스코프의 이해를 돕기위한 독립 블록 예제
+잘 사용하지 않지만 스코프의 이해를 돕기위한 독립 블록 예제
 
 ```javascript
 console.log('before block');
@@ -128,6 +132,7 @@ console.log('before block');
 }
 console.log(`outside block; x=${x}`);	// ReferenceError : x는 정의되지 않았습니다.
 ```
+
 - 블록 범위의 스코프에는 존재하지만 블록 밖의 스코프에서는 정의되지 않는다. <br>
 
 ## 변수 숨기기
@@ -146,6 +151,7 @@ console.log(typeof x);		// "undefined"; x는 스코프 밖에 있습니다.
 }
 console.log(typeof x);		// "undefined"; x는 스코프 밖에 있습니다.
 ```
+
 - 변수 x는 서로 다른 스코프에 존재하기 때문에 이름만 동일한 두 개의 변수 이다. <br>
 
 ```javascript
@@ -186,6 +192,7 @@ console.log(typeof x);		// "undefined"; x는 스코프에 있지 않습니다.
 	console.log(z);					// 3
 }
 ```
+
 - 내부에서는 외부 스코프에 접근할 수 있지만, 외부 스코프는 내부 스코프에 접근할 수 없다. <br>
 
 ## 함수, 클로저, 정적 스코프
@@ -202,6 +209,7 @@ let globalFunc;					// 정의되지 않은 전역 함수
 }
 globalFunc();					// "a"
 ```
+
 - 스코프에서는 빠져나왔지만 함수는 여전히 내부 블록의 스코프에 접근하고 있다. <br>
 - 함수가 내부 블록의 식별자를 참조하기때문에 해당 스코프는 유지 된다. <br>
 
@@ -216,6 +224,7 @@ let f;							// 정의되지 않은 함수
 let oRef = f();
 oRef.note = "Not so safe after all!";
 ```
+
 - 내부 블록의 o는 밖에서 접근할 수 없다. <br>
 - 외부에서 선언되고 내부에서 정의된 함수의 반환값을 통해 내부 스코프에 접근할 수 있다. <br>
 - 클로저를 통해 특별한 접근 루트를 만들어 해당 스코프의 소스 오염을 방지한다. <br>
@@ -229,6 +238,7 @@ oRef.note = "Not so safe after all!";
 	// IIFE 바디
 })();
 ```
+
 - 함수 내부는 내부 스코프를 가지지만, 자체가 함수이므로 외부로 반환값을 보낼 수 있다. <br>
 
 ```javascript
@@ -238,6 +248,7 @@ const message = (function() {
 })();
 console.log(message);		// "The secret is 13 characters long."
 ```
+
 <br>
 
 ```javascript
@@ -250,6 +261,7 @@ const f = (function() {
 f();	// "I have been called 1 time(s)."
 f();	// "I have been called 2 time(s)."
 ```
+
 - 반환값은 함수도 반환할 수 있다.<br>
 - 외부에서는 익명 함수 내에 존재하는 count에 접근할 수 없지만 반환값을 통해 값을 확인할 수 있다. <br>
 
@@ -268,6 +280,7 @@ x;			// undefined; x는 존재하지만 할당 받는 값이 없는 상태로 �
 var x = 3;
 x;			// 3
 ```
+
 자바스크립트가 위의 예제를 해석한 내용
 
 ```javascript
@@ -276,35 +289,39 @@ x;				// undefined
 x = 3;
 x;				// 3
 ```
+
 심화 예제
 
 ```javascript
-// 원래 코드								// 자바스크립트가 해석한 코드
-											var x;
-											var y;
-if(x !== 3) {								if(x !== 3) {
-	console.log(y);								console.log(y);
-	var y = 5;									y = 5;
-	if(y === 5) {								if(y === 5) {
-		var x = 3;									var x = 3;
-	}											}
-	console.log(y);								console.log(y);
-}											}
-if(x === 3) {								if(x === 3) {
-	console.log(y);								console.log(y);
-}											}
+// 원래 코드					// 자바스크립트가 해석한 코드
+								var x;
+                                var y;
+if(x !== 3) {						if(x !== 3) {
+	console.log(y);						console.log(y);
+	var y = 5;							y = 5;
+	if(y === 5) {						if(y === 5) {
+		var x = 3;							var x = 3;
+	}									}
+	console.log(y);						console.log(y);
+}									}
+if(x === 3) {						if(x === 3) {
+	console.log(y);						console.log(y);
+}									}
 ```
+
 <br>
+
 ```javascript
-// 원래 코드								// 자바스크립트가 해석한 코드
-											var x;
-var x = 3;									x = 3;
-if(x === 3) {								if(x === 3) {
-	var x = 2;									x = 2;
-	console.log(x);								console.log(x);
-}											}
-console.log(x);								console.log(x);
+// 원래 코드					// 자바스크립트가 해석한 코드
+								var x;
+var x = 3;						x = 3;
+if(x === 3) {					if(x === 3) {
+	var x = 2;						x = 2;
+	console.log(x);					console.log(x);
+}								}
+console.log(x);					console.log(x);
 ```
+
 - 아직까지 var이 사라지지 않는 이유는 이전 소스들이 존재하기 때문이다. <br>
 
 ## 함수 호이스팅
@@ -315,6 +332,7 @@ function f() {
 	console.log('f');
 }
 ```
+
 <br>
 
 ```javascript
@@ -323,6 +341,7 @@ let f = function() {
 	console.log('f');
 }
 ```
+
 - 함수 선언은 호이스팅되어 상단에 선언 및 초기화가 진행된다. <br>
 - 변수에 할당하는 함수는 호이스팅 되지 않고 변수 스코프의 규칙을 따른다. <br>
 
@@ -337,6 +356,7 @@ if(typeof x === "undefined") {
 }
 var x = 5;
 ```
+
 - var로 선언한 경우 호이스팅 되어 에러가 생기지 않는다. <br>
 
 ```javascript
@@ -347,6 +367,7 @@ if(typeof x === "undefined") {
 }
 let x = 5;
 ```
+
 - let 으로 선언된 경우 변수가 초기화되지 않아 에러가 발생한다. <br>
 
 ## 스트릭트 모드
