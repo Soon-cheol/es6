@@ -77,7 +77,7 @@ function f() {
 - 어떤 함수도 호출하지 않았을 때 실행 흐름은 전역 스코프에 있다.<br>
 - 전역 스코프에서 선언한 것은 무엇이든 프로그램의 모든 스코프에서 볼 수 있다.<br>
 <br>
-> 전역 변수를 사용하는 것은 어쩔 수 없지만 <i>의존</i>하는 것은 피해야 한다.
+전역 변수를 사용하는 것은 어쩔 수 없지만 <i>의존</i>하는 것은 피해야 한다.
 <br>
 
 ```javascript
@@ -175,21 +175,21 @@ console.log(typeof x);		// "undefined"; x는 스코프에 있지 않습니다.
 {
 	// 외부블록
 	let x = { color : "blue" };
-	let y = x;						// y와 x는 같은 객체를 가리킵니다.
+	let y = x;					// y와 x는 같은 객체를 가리킵니다.
 	let z = 3;
 	{
 		// 내부 블록
-		let x = 5;					// 이제 바깥의 x는 가려졌습니다.
-		console.log(x);				// 5
+		let x = 5;				// 이제 바깥의 x는 가려졌습니다.
+		console.log(x);			// 5
 		console.log(y.color);		// "blue"; y가 가리키는,
-									// 외부 스코프의 x가 가리키는 객체는
-									// 스코프 안에 있습니다.
+						// 외부 스코프의 x가 가리키는 객체는
+						// 스코프 안에 있습니다.
 		y.color = "red";
-		console.log(z);				// 3; z는 숨겨지지 않았습니다.
+		console.log(z);			// 3; z는 숨겨지지 않았습니다.
 	}
 	console.log(x.color);			// "red"; 객체는 내부 스코프에서 수정됐습니다.
 	console.log(y.color);			// "red"; x와 y는 같은 객체를 가리킵니다.
-	console.log(z);					// 3
+	console.log(z);				// 3
 }
 ```
 
@@ -267,10 +267,11 @@ f();	// "I have been called 2 time(s)."
 
 ## 함수 스코프와 호이스팅
 - ES6에서 let을 도입하기 전에는 var로 변수를 선언했으며, var 선언변수는 함수 스코프를 가지고 있다. <br>
+<br>
 let 예제
 
 ```javascript
-x; 			// ReferenceError; x는 정의되지 않았습니다.
+x; 		// ReferenceError; x는 정의되지 않았습니다.
 let x = 3;	// 에러가 일어나서 실행이 멈췄으므로 여기에는 결코 도달할 수 없습니다.
 ```
 var 예제
@@ -285,9 +286,9 @@ x;			// 3
 
 ```javascript
 var x;			// 선언(할당은 아닌)이 끌어올려집니다.
-x;				// undefined
+x;			// undefined
 x = 3;
-x;				// 3
+x;			// 3
 ```
 
 심화 예제
@@ -295,18 +296,18 @@ x;				// 3
 ```javascript
 // 원래 코드					// 자바스크립트가 해석한 코드
 								var x;
-                                var y;
-if(x !== 3) {						if(x !== 3) {
-	console.log(y);						console.log(y);
-	var y = 5;							y = 5;
-	if(y === 5) {						if(y === 5) {
-		var x = 3;							var x = 3;
-	}									}
-	console.log(y);						console.log(y);
-}									}
-if(x === 3) {						if(x === 3) {
-	console.log(y);						console.log(y);
-}									}
+								var y;
+if(x !== 3) {					if(x !== 3) {
+	console.log(y);					console.log(y);
+	var y = 5;						y = 5;
+	if(y === 5) {					if(y === 5) {
+		var x = 3;						var x = 3;
+	}								}
+	console.log(y);					console.log(y);
+}								}
+if(x === 3) {					if(x === 3) {
+	console.log(y);					console.log(y);
+}							}
 ```
 
 <br>
