@@ -16,7 +16,7 @@ for(let prop in o) {
 }
 ```
 for...in 루프에는 키가 심볼인 프로퍼티는 포함되지 않습니다.
-
+[hasOwnProperty](https://mygumi.tistory.com/330)
 ### 9.1.2 Object.keys
 Object.keys는 객체에서 나열 가능한 문자열 프로퍼티를 배열로 반환합니다.
 ```javascript
