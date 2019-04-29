@@ -16,7 +16,11 @@ for(let prop in o) {
 }
 ```
 for...in 루프에는 키가 심볼인 프로퍼티는 포함되지 않습니다.
+
 [hasOwnProperty](https://mygumi.tistory.com/330)
+객체가 특정 프로퍼티에 대한 소유 여부를 반환한다.해당 객체에 특정 프로퍼티가 존재하면 true, 그렇지 않으면 false 를 반환한다.
+_단, 프로토타입 체인은 확인하지 않고, 해당 객체가 스스로 정의한 프로퍼티만을 판단한다._
+
 ### 9.1.2 Object.keys
 Object.keys는 객체에서 나열 가능한 문자열 프로퍼티를 배열로 반환합니다.
 ```javascript
