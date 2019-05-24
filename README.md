@@ -5,10 +5,10 @@
 git clone https://github.com/Soon-cheol/es6.git
 
 ### 진행
-- 인원 : 최순철, 유석규, 유혜진, 김소라, 전동엽, 이기은
+- 인원 : 최순철, 유석규, 유혜진, 김소라, 전동엽
 - 시간 : 오후 7시 ~ 10시
-- 일자 : ~~매주 일요일~~ -> 매주 목요일
-- 장소 : <a href="https://map.naver.com/local/siteview.nhn?code=1231340216&_ts=1554684448778" target="_blank">강남 공존라운지</a>
+- 일자 : 매주 목요일
+- 장소 : <a href="https://spacecloud.kr/space/3476" target="_blank">강남 윙스터디</a>
 
 ### 정리
 - 1장 첫 번째 어플리케이션 - X
